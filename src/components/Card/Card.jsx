@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { CardBody, CardContainer, CardFooter } from "./CardStyle";
+import { TextLimit } from "../TextLimit/TextLimit";
 
 // "props" passa as informações referentes às news, vindas da Home.jsx; "props.title": o nome title (assim como os outros) vem do que eu defini lá na págia Home.jsx
 export function Card(props){
@@ -9,9 +10,9 @@ export function Card(props){
             <CardBody>
                 <div>
                     <h2>{props.title}</h2>
-                    <p>{props.text}</p>
+                    <img src={props.banner} alt="Imagem" />
                 </div>
-                <img src={props.banner} alt="Imagem" />
+                <TextLimit text={props.text} limit={120} />
             </CardBody>
             <CardFooter>
                 <div>

@@ -13,16 +13,22 @@ export const CardContainer = styled.section`
 
 export const CardBody = styled.article`
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1rem;
+
+    div {
+        display: flex;
+        align-items: center;
+    }
 
     h2 {
         margin-bottom: 1rem;
     }
 
     img {
-        width: 30%;
+        width: 40%;
         object-fit: cover;
         object-position: center;
     }
