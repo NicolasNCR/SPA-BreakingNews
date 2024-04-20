@@ -2,25 +2,25 @@
 
 import { CardBody, CardContainer, CardFooter } from "./CardStyle";
 
-// {news} é o objeto "props" (nome padrão) desconstruído, dessa maneira, passa só as news e não a key
-export function Card({news}){
+// "props" passa as informações referentes às news, vindas da Home.jsx; "props.title": o nome title (assim como os outros) vem do que eu defini lá na págia Home.jsx
+export function Card(props){
     return (
         <CardContainer>
             <CardBody>
                 <div>
-                    <h2>{news.title}</h2>
-                    <p>{news.text}</p>
+                    <h2>{props.title}</h2>
+                    <p>{props.text}</p>
                 </div>
-                <img src={news.image} alt="Imagem" />
+                <img src={props.banner} alt="Imagem" />
             </CardBody>
             <CardFooter>
                 <div>
                     <i className="bi bi-hand-thumbs-up"></i>
-                    <span>{news.likes}</span>
+                    <span>{props.likes}</span>
                 </div>
                 <div>
                     <i className="bi bi-chat"></i>
-                    <span>{news.comments}</span>
+                    <span>{props.comments}</span>
                 </div>
             </CardFooter>
         </CardContainer>
