@@ -2,27 +2,41 @@ import { useState, useEffect } from "react";
 
 import { Card } from "../../components/Card/Card";
 import { Navbar } from "../../components/Navbar/Navbar";
-import { HomeBody } from "./HomeStyle";
+import { HomeBody, HomeHeader } from "./HomeStyle";
 // import { news } from "../../Datas";
-import { getAllNews } from "../../services/postsServices";
+import { getAllNews, getTopNews } from "../../services/postsServices";
 
 export default function Home(){
     // Estado inicial da aplicação definido pelo useState; setNews atualiza esse estado
     const [news, setNews] = useState([]) 
+    const [topNews, setTopNews] = useState([]) 
 
-    async function findAllPosts() {
-        const response = await getAllNews()
-        setNews(response.data.results)
+    async function findAllNews() {
+        const newsResponse = await getAllNews()
+        setNews(newsResponse.data.results)
+
+        const topNewsResponse = await getTopNews()
+        setTopNews(topNewsResponse.data.news)
     }
 
     // Quando componente for montado na tela: findAllPosts será executado; como o array de dependências está vazio, será executado apenas uma vez 
     useEffect(() => {
-        findAllPosts();
+        findAllNews();
     }, []);
 
     return (
         <> {/* Fragment: tag vazia */}
             <Navbar />
+            <HomeHeader>
+                <Card 
+                top={true}
+                title={topNews.title}
+                text={topNews.text}
+                banner={topNews.banner}
+                likes={topNews.likes}
+                comments={topNews.comments}
+                />
+            </HomeHeader>
             <HomeBody>
                 {news.map((item) => (
                     <Card 
@@ -30,8 +44,8 @@ export default function Home(){
                     title={item.title}
                     text={item.text}
                     banner={item.banner}
-                    likes={item.likes.length}
-                    comments={item.comments.length}
+                    likes={item.likes}
+                    comments={item.comments}
                     />
                 ))}
             </HomeBody>
