@@ -19,7 +19,7 @@ const router = createBrowserRouter([
         element: <Home />,
       }, 
       {
-        path: "/search", // carregará juntamente/abaixo da rota principal "/" do Navbar
+        path: "/search/:title", // carregará juntamente/abaixo da rota principal "/" do Navbar
         element: <Search />,
       }
     ],
