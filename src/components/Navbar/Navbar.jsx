@@ -1,10 +1,22 @@
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import logo from '../../images/logo.png';
-import { Nav, Button, LogoImage, InputSpace } from './NavbarStyle';
+import { Nav, Button, LogoImage, InputSpace, ErrorSpan } from './NavbarStyle';
+
+// Schema
+const searchSchema = z.object({
+    title: z
+    .string()
+    .nonempty({ message: "Por favor, digite algo para pesquisar." })
+    .refine(value => !/^\s*$/.test(value), { message: "Por favor, digite algo para pesquisar." } ), // "/^\s*$/" é uma regex que confere se existem espaços (" ") em uma string
+})
 
 export function Navbar(){
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit, reset, formState: {errors} } = useForm({
+        resolver: zodResolver(searchSchema),
+    });
     const navigate = useNavigate();
 
     function onSearch(data) {
@@ -30,6 +42,7 @@ export function Navbar(){
                 </Link>
                 <Button>Entrar</Button>
             </Nav>
+            {errors.title && <ErrorSpan><i className="bi bi-exclamation-triangle-fill"></i> {errors.title.message}</ErrorSpan>}
             <Outlet />
         </>
     )
