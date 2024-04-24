@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 import { Card } from "../../components/Card/Card";
-import { Navbar } from "../../components/Navbar/Navbar";
 import { HomeBody, HomeHeader } from "./HomeStyle";
 // import { news } from "../../Datas";
 import { getAllNews, getTopNews } from "../../services/postsServices";
@@ -26,7 +25,6 @@ export default function Home(){
 
     return (
         <> {/* Fragment: tag vazia */}
-            <Navbar />
             <HomeHeader>
                 <Card 
                 top={true}

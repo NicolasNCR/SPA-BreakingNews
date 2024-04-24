@@ -1,17 +1,7 @@
-import "./App.css";
-import { GlobalStyled } from "./GlobalStyled";
-import Home from "./pages/Home/Home";
+import { Outlet } from 'react-router-dom';
 
 function App() {
-// Código JS
-
-  return (
-    // Código HTML com JS
-    <>
-    <GlobalStyled /> {/* Tudo abaixo do GlobalStyled receberá o CSS global */}
-    <Home />
-    </>
-  )
+  return <Outlet />
 }
 
-export default App
+export default App;
