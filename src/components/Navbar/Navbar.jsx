@@ -3,7 +3,8 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import logo from '../../images/logo.png';
-import { Nav, Button, LogoImage, InputSpace, ErrorSpan } from './NavbarStyle';
+import { Nav, LogoImage, InputSpace, ErrorSpan } from './NavbarStyle';
+import { Button } from '../Button/Button';
 
 // Schema
 const searchSchema = z.object({
@@ -40,7 +41,9 @@ export function Navbar(){
                 <Link to='/'>
                     <LogoImage src={logo} alt="Logo do Breaking News" />
                 </Link>
-                <Button>Entrar</Button>
+                <Link to='/auth'>
+                    <Button type="button" text="Entrar">Entrar</Button>
+                </Link>
             </Nav>
             {errors.title && <ErrorSpan><i className="bi bi-exclamation-triangle-fill"></i> {errors.title.message}</ErrorSpan>}
             <Outlet />

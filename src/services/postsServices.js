@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:3000";
-// const baseURL = "https://api-breakingnews-w63s.onrender.com";
+// const baseURL = "http://localhost:3000";
+const baseURL = "https://api-breakingnews-w63s.onrender.com";
 
 export function getAllNews() {
     const response = axios.get(`${baseURL}/news`);
