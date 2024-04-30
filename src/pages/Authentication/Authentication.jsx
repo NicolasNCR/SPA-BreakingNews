@@ -6,6 +6,7 @@ import { AuthContainer, Section } from './AuthenticationStyle';
 import { ErrorSpan } from '../../components/Navbar/NavbarStyle';
 import { signinSchema } from '../../Schemas/signinSchema';
 import { signupSchema } from '../../Schemas/signupSchema';
+import { signUp } from '../../services/userServices';
 
 export function Authentication() {
     // Os nomes não podem se repetir ("register" e etc), por isso, utilizamos apelidos ("registerSignup")
@@ -29,8 +30,13 @@ export function Authentication() {
         console.log(data)
     }
 
-    function upHandleSubmit(data) {
-        console.log(data)
+    async function upHandleSubmit(data) {
+        try {
+            const response = await signUp(data);
+            console.log(response);
+        } catch(err) {
+            console.log(err)
+        }
     }
 
     return (
