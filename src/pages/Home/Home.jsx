@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Card } from "../../components/Card/Card";
 import { HomeBody, HomeHeader } from "./HomeStyle";
 // import { news } from "../../Datas";
-import { getAllNews, getTopNews } from "../../services/postsServices";
+import { getAllNews, getTopNews } from "../../services/newsServices";
 
 export default function Home(){
     // Estado inicial da aplicação definido pelo useState; setNews atualiza esse estado

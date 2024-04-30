@@ -1,18 +1,10 @@
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import logo from '../../images/logo.png';
 import { Nav, LogoImage, InputSpace, ErrorSpan } from './NavbarStyle';
 import { Button } from '../Button/Button';
-
-// Schema
-const searchSchema = z.object({
-    title: z
-    .string()
-    .nonempty({ message: "Por favor, digite algo para pesquisar." })
-    .refine(value => !/^\s*$/.test(value), { message: "Por favor, digite algo para pesquisar." } ), // "/^\s*$/" é uma regex que confere se existem espaços (" ") em uma string
-})
+import { searchSchema } from '../../Schemas/searchSchema';
 
 export function Navbar(){
     const { 

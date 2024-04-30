@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { searchNews } from '../../services/postsServices';
+import { searchNews } from '../../services/newsServices';
 import { ContainerResults, SearchNews, TextResults } from './SearchStyle';
 import { Card } from '../../components/Card/Card';
 
