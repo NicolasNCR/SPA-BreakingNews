@@ -15,7 +15,12 @@ const searchSchema = z.object({
 })
 
 export function Navbar(){
-    const { register, handleSubmit, reset, formState: {errors} } = useForm({
+    const { 
+        register,
+        handleSubmit, 
+        reset, 
+        formState: { errors } 
+    } = useForm({
         resolver: zodResolver(searchSchema),
     });
     const navigate = useNavigate();
