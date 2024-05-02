@@ -7,6 +7,8 @@ import { ErrorSpan } from '../../components/Navbar/NavbarStyle';
 import { signinSchema } from '../../Schemas/signinSchema';
 import { signupSchema } from '../../Schemas/signupSchema';
 import { signUp } from '../../services/userServices';
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 export function Authentication() {
     // Os nomes não podem se repetir ("register" e etc), por isso, utilizamos apelidos ("registerSignup")
@@ -30,10 +32,13 @@ export function Authentication() {
         console.log(data)
     }
 
+    const navigate = useNavigate();
+
     async function upHandleSubmit(data) {
         try {
             const response = await signUp(data);
-            console.log(response);
+            Cookies.set("token", response.data.token, {expires: 1});
+            navigate("/")
         } catch(err) {
             console.log(err)
         }
