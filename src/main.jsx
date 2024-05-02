@@ -1,13 +1,15 @@
+// External Libs
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-// import App from './App.jsx';
-import { Navbar } from './components/Navbar/Navbar.jsx';
-import Home from './pages/Home/Home.jsx';
-import { Search } from './pages/Search/Search.jsx';
-import { GlobalStyled } from './GlobalStyled.jsx';
-import ErrorPage from './pages/ErrorPage/ErrorPage.jsx';
-import { Authentication } from './pages/Authentication/Authentication.jsx';
+
+// Local Modules
+import { GlobalStyled } from './GlobalStyled';
+import Home from './pages/Home/Home';
+import { Search } from './pages/Search/Search';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
+import { Authentication } from './pages/Authentication/Authentication';
+import { Navbar } from './components/Navbar/Navbar';
 
 const router = createBrowserRouter([
   {

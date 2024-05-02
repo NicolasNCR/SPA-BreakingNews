@@ -1,8 +1,12 @@
+// External Libs
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { searchNews } from '../../services/newsServices';
+
+// Local Modules
 import { ContainerResults, SearchNews, TextResults } from './SearchStyle';
 import { Card } from '../../components/Card/Card';
+import { searchNews } from '../../services/newsServices';
+
 
 export function Search() {
     const { title } = useParams();

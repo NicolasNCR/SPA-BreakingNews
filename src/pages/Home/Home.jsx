@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+// External Libs
+import { useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
 
-import { Card } from "../../components/Card/Card";
-import { HomeBody, HomeHeader } from "./HomeStyle";
+// Local Modules
+import { HomeBody, HomeHeader } from './HomeStyle';
+import { Card } from '../../components/Card/Card';
+import { getAllNews, getTopNews } from '../../services/newsServices';
 // import { news } from "../../Datas";
-import { getAllNews, getTopNews } from "../../services/newsServices";
-import Cookies from "js-cookie";
+
 
 export default function Home(){
     // Estado inicial da aplicação definido pelo useState; setNews atualiza esse estado

@@ -1,8 +1,11 @@
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+// External Libs
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import logo from '../../images/logo.png';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
+
+// Local Modules
 import { Nav, LogoImage, InputSpace, ErrorSpan } from './NavbarStyle';
+import logo from '../../images/logo.png';
 import { Button } from '../Button/Button';
 import { searchSchema } from '../../Schemas/searchSchema';
 

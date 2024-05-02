@@ -1,4 +1,4 @@
-import { InputSpace } from "./InputStyle";
+import { InputSpace } from './InputStyle';
 
 // eslint-disable-next-line react/prop-types
 export function Input({ type, placeholder, name, register }) {

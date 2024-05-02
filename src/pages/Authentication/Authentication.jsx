@@ -1,14 +1,17 @@
+// External Libs
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
+import Cookies from 'js-cookie';
+
+// Local Modules
+import { AuthContainer, Section } from './AuthenticationStyle';
 import { Input } from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
-import { AuthContainer, Section } from './AuthenticationStyle';
 import { ErrorSpan } from '../../components/Navbar/NavbarStyle';
 import { signinSchema } from '../../Schemas/signinSchema';
 import { signupSchema } from '../../Schemas/signupSchema';
 import { signIn, signUp } from '../../services/userServices';
-import Cookies from 'js-cookie';
-import { useNavigate } from 'react-router-dom';
 
 export function Authentication() {
     // Os nomes não podem se repetir ("register" e etc), por isso, utilizamos apelidos ("registerSignup")
