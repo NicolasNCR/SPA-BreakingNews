@@ -8,7 +8,6 @@ import { Card } from '../../components/Card/Card';
 import { getAllNews, getTopNews } from '../../services/newsServices';
 // import { news } from "../../Datas";
 
-
 export default function Home(){
     // Estado inicial da aplicação definido pelo useState; setNews atualiza esse estado
     const [news, setNews] = useState([]) 
