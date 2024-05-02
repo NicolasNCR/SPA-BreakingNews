@@ -4,6 +4,7 @@ import { Card } from "../../components/Card/Card";
 import { HomeBody, HomeHeader } from "./HomeStyle";
 // import { news } from "../../Datas";
 import { getAllNews, getTopNews } from "../../services/newsServices";
+import Cookies from "js-cookie";
 
 export default function Home(){
     // Estado inicial da aplicação definido pelo useState; setNews atualiza esse estado
@@ -21,6 +22,7 @@ export default function Home(){
     // Quando componente for montado na tela: findAllPosts será executado; como o array de dependências está vazio, será executado apenas uma vez 
     useEffect(() => {
         findAllNews();
+        console.log(Cookies.get("token"));
     }, []);
 
     return (

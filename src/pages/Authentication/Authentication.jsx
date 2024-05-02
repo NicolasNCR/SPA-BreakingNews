@@ -6,7 +6,7 @@ import { AuthContainer, Section } from './AuthenticationStyle';
 import { ErrorSpan } from '../../components/Navbar/NavbarStyle';
 import { signinSchema } from '../../Schemas/signinSchema';
 import { signupSchema } from '../../Schemas/signupSchema';
-import { signUp } from '../../services/userServices';
+import { signIn, signUp } from '../../services/userServices';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 
@@ -28,11 +28,17 @@ export function Authentication() {
         resolver: zodResolver(signinSchema),
     });
 
-    function inHandleSubmit(data) {
-        console.log(data)
-    }
-
     const navigate = useNavigate();
+
+    async function inHandleSubmit(data) {
+        try {
+            const response = await signIn(data);
+            Cookies.set("token", response.data.token, {expires: 1});
+            navigate("/")
+        } catch(err) {
+            console.log(err)
+        }
+    }
 
     async function upHandleSubmit(data) {
         try {
