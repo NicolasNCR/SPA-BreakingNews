@@ -1,5 +1,5 @@
 // External Libs
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
@@ -36,6 +36,7 @@ export function Navbar(){
     async function findUserLogged() {
         try {
             const response = await userLogged();
+            // Adiciona ao Context 
             setUser(response.data)
         } catch(err) {
             console.log(err)
@@ -74,7 +75,7 @@ export function Navbar(){
                 {/* Verifica se "user" é um objeto definido e se possui alguma chave. Se sim, aparecerá o "UserLoggedSpace", se não, aparecerá o botão de entrar */}
                 {user && Object.keys(user).length !== 0 ? (
                     <UserLoggedSpace>
-                        <Link to='/profile'>
+                        <Link to='/profile' style={{textDecoration: 'none'}}>
                             <h2>{user.name}</h2>
                         </Link>
                         <i className="bi bi-box-arrow-right" onClick={signout}></i>
