@@ -11,6 +11,7 @@ import ErrorPage from './pages/ErrorPage/ErrorPage';
 import { Authentication } from './pages/Authentication/Authentication';
 import { Navbar } from './components/Navbar/Navbar';
 import { Profile } from './pages/Profile/Profile';
+import UserProvider from './Context/UserContext';
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <GlobalStyled /> {/* Tudo abaixo do GlobalStyled receberá o CSS global */}
-    <RouterProvider router={router} />
+    {/* Todas as rotas são filhas do "UserProvider", ou seja, terão acesso aos dados do user */}
+    <UserProvider>
+      <RouterProvider router={router} />
+    </UserProvider>
   </React.StrictMode>,
 )

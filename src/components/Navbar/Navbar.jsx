@@ -1,5 +1,5 @@
 // External Libs
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
@@ -11,6 +11,7 @@ import logo from '../../images/logo.png';
 import { Button } from '../Button/Button';
 import { searchSchema } from '../../Schemas/searchSchema';
 import { userLogged } from '../../services/userServices';
+import { UserContext } from '../../Context/UserContext';
 
 export function Navbar(){
     const { 
@@ -24,7 +25,7 @@ export function Navbar(){
 
     const navigate = useNavigate();
 
-    const [user, setUser] = useState({})
+    const {user, setUser} = useContext(UserContext);
 
     function onSearch(data) {
         const { title } = data;
