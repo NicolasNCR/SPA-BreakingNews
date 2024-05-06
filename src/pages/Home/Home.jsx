@@ -1,6 +1,6 @@
 // External Libs
 import { useState, useEffect } from 'react';
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
 
 // Local Modules
 import { HomeBody, HomeHeader } from './HomeStyle';
@@ -24,7 +24,6 @@ export default function Home(){
     // Quando componente for montado na tela: findAllPosts será executado; como o array de dependências está vazio, será executado apenas uma vez 
     useEffect(() => {
         findAllNews();
-        console.log(Cookies.get("token"));
     }, []);
 
     return (

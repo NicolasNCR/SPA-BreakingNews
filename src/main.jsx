@@ -10,6 +10,7 @@ import { Search } from './pages/Search/Search';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import { Authentication } from './pages/Authentication/Authentication';
 import { Navbar } from './components/Navbar/Navbar';
+import { Profile } from './pages/Profile/Profile';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "/search/:title", // carregará juntamente/abaixo da rota principal "/" do Navbar
         element: <Search />,
+      },
+      {
+        path: "/profile", // carregará juntamente/abaixo da rota principal "/" do Navbar
+        element: <Profile />,
       }
     ],
   },
