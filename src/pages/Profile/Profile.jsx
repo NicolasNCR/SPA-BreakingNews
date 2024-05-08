@@ -1,12 +1,26 @@
 // External Libs
-import { useContext } from "react";
+import { useContext, useEffect, useState } from 'react';
 
 // Local Modules
-import { UserContext } from "../../Context/UserContext";
-import { ProfileActions, ProfileAvatar, ProfileBackground, ProfileContainer, ProfileHeader, ProfileIconAdd, ProfileIconEdit, ProfileUser } from "./ProfileStyle";
+import { ProfileActions, ProfileAvatar, ProfileBackground, ProfileContainer, ProfileHeader, ProfileIconAdd, ProfileIconEdit, ProfileNews, ProfileUser } from './ProfileStyle';
+import { UserContext } from '../../Context/UserContext';
+import { getAllNewsByUser } from '../../services/newsServices';
+import { Card } from '../../components/Card/Card';
 
 export function Profile() {
     const { user } = useContext(UserContext);
+    const [news, setNews] = useState([]);
+
+    async function findAllNewsByUser() {
+        const newsResponse = await getAllNewsByUser();
+        setNews(newsResponse.data.results);
+        // console.log(newsResponse.data.results);
+    }
+
+    useEffect(() => {
+        findAllNewsByUser();
+    }, []);
+
     return (
         <ProfileContainer>
             <ProfileHeader>
@@ -27,6 +41,20 @@ export function Profile() {
                     </ProfileIconAdd>
                 </ProfileActions>
             </ProfileHeader>
+            <ProfileNews>
+                {/* Se não houver nenhuma notícia publicada */}
+                {news.length === 0 && <h3>Você ainda não publicou nenhuma notícia...</h3>}
+                {news.map((item) => (
+                    <Card 
+                    key={item.id}
+                    title={item.title}
+                    text={item.text}
+                    banner={item.banner}
+                    likes={item.likes}
+                    comments={item.comments}
+                    />
+                ))}
+            </ProfileNews>
         </ProfileContainer>
     );
 }
