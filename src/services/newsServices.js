@@ -19,6 +19,7 @@ export function searchNews(title) {
     return response;
 }
 
+// Rotas com validação (header contendo o "Authorization")
 export function getAllNewsByUser() {
     const response = axios.get(`${baseURL}/news/byuser`, {
         headers: {
@@ -33,6 +34,15 @@ export function createNews(body) {
         headers: {
             Authorization: `Bearer ${Cookies.get("token")}`,
         }
+    });
+    return response;
+}
+
+export function getNewsById(id) {
+    const response = axios.get(`${baseURL}/news/find/${id}`, {
+        headers: {
+            Authorization: `Bearer ${Cookies.get("token")}`,
+        } 
     });
     return response;
 }

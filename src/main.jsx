@@ -33,7 +33,7 @@ const router = createBrowserRouter([
         element: <Profile />,
       },
       {
-        path: "/manage-news/:action", // carregará juntamente/abaixo da rota principal "/" do Navbar
+        path: "/manage-news/:action/:id", // carregará juntamente/abaixo da rota principal "/" do Navbar
         element: <ManageNews />,
       }
     ],

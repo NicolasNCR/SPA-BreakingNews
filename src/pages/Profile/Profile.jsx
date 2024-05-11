@@ -37,7 +37,8 @@ export function Profile() {
                     <h3>@{user.username}</h3>
                 </ProfileUser>
                 <ProfileActions>
-                    <Link to='/manage-news/add'>
+                    {/* Esse news do final do Link é para a rota não quebrar, pois no main.jsx é necessário um id como parâmetro (nesse caso, não temos id; ele será utilizado somente na rota de edit) */}
+                    <Link to='/manage-news/add/news'>
                         <ProfileIconAdd>
                             <i className="bi bi-plus-circle"></i>
                         </ProfileIconAdd>
@@ -50,11 +51,13 @@ export function Profile() {
                 {news.map((item) => (
                     <Card 
                     key={item.id}
+                    id={item.id}
                     title={item.title}
                     text={item.text}
                     banner={item.banner}
                     likes={item.likes}
                     comments={item.comments}
+                    actions={true}
                     />
                 ))}
             </ProfileNews>
