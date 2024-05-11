@@ -1,5 +1,6 @@
 // External Libs
 import { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 // Local Modules
 import { ProfileActions, ProfileAvatar, ProfileBackground, ProfileContainer, ProfileHeader, ProfileIconAdd, ProfileIconEdit, ProfileNews, ProfileUser } from './ProfileStyle';
@@ -36,9 +37,11 @@ export function Profile() {
                     <h3>@{user.username}</h3>
                 </ProfileUser>
                 <ProfileActions>
-                    <ProfileIconAdd>
-                        <i className="bi bi-plus-circle"></i>
-                    </ProfileIconAdd>
+                    <Link to='/manage-news/add'>
+                        <ProfileIconAdd>
+                            <i className="bi bi-plus-circle"></i>
+                        </ProfileIconAdd>
+                    </Link>
                 </ProfileActions>
             </ProfileHeader>
             <ProfileNews>

@@ -9,6 +9,7 @@ import Home from './pages/Home/Home';
 import { Search } from './pages/Search/Search';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import { Authentication } from './pages/Authentication/Authentication';
+import { ManageNews } from './pages/ManageNews/ManageNews'
 import { Navbar } from './components/Navbar/Navbar';
 import { Profile } from './pages/Profile/Profile';
 import UserProvider from './Context/UserContext';
@@ -30,10 +31,14 @@ const router = createBrowserRouter([
       {
         path: "/profile", // carregará juntamente/abaixo da rota principal "/" do Navbar
         element: <Profile />,
+      },
+      {
+        path: "/manage-news/:action", // carregará juntamente/abaixo da rota principal "/" do Navbar
+        element: <ManageNews />,
       }
     ],
   },
-  {
+  { 
     path: "/auth",
     element: <Authentication />
   }
