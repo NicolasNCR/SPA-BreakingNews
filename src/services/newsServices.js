@@ -46,3 +46,21 @@ export function getNewsById(id) {
     });
     return response;
 }
+
+export function editNews(body, id) {
+    const response = axios.patch(`${baseURL}/news/update/${id}`, body, {
+        headers: {
+            Authorization: `Bearer ${Cookies.get("token")}`,
+        } 
+    });
+    return response;
+}
+
+export function deleteNews(id) {
+    const response = axios.delete(`${baseURL}/news/delete/${id}`, {
+        headers: {
+            Authorization: `Bearer ${Cookies.get("token")}`,
+        } 
+    });
+    return response;
+}

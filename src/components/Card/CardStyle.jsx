@@ -43,9 +43,14 @@ export const CardHeader = styled.article`
         width: 100%;
     }
 
-    i {
+    span {
         display: flex;
+        flex-direction: row;
         justify-content: flex-end;
+        gap: 1rem;
+    }
+
+    i {
         color: #0bade3;
         font-size: 1.1rem;
         text-decoration: none;
