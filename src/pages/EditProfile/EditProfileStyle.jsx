@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const NewsContainer = styled.section`
+export const EditProfileContainer = styled.section`
     width: 60%;
     margin: 1rem auto;
     display: flex;

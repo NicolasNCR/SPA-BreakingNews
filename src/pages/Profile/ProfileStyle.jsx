@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const ProfileContainer = styled.section`
     width: 100%;
@@ -85,6 +86,24 @@ export const ProfileIconAdd = styled.i`
         color: #0bade3;
         font-size: 2.15rem;
     }
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #0bade3;
+
+  &:link,
+  &:visited {
+    color: #0bade3;
+  }
+
+  &:hover {
+    color: #0bade3;
+  }
+
+  &:active {
+    color: #0bade3;
+  }
 `;
 
 export const ProfileNews = styled.main`

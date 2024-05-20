@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 // Local Modules
-import { AddNewsContainer } from './ManageNewsStyle';
+import { NewsContainer } from './ManageNewsStyle';
 import { newsSchema } from '../../Schemas/newsSchema';
 import { createNews, deleteNews, editNews, getNewsById } from '../../services/newsServices';
 import { ErrorSpan } from '../../components/Navbar/NavbarStyle';
@@ -26,7 +26,7 @@ export function ManageNews() {
     async function registerNewsSubmit(data) {
         try {
             await createNews(data);
-            navigate('/profile')
+            navigate('/profile');
         } catch(err) {
             console.log(err);
         }
@@ -68,7 +68,7 @@ export function ManageNews() {
     })
 
     return (
-        <AddNewsContainer>
+        <NewsContainer>
             <h2>{action === "add" ? "Adicionar" : action === "edit" ? "Atualizar" : "Apagar"} Notícia</h2>
             <form onSubmit={
                 action === "add" 
@@ -92,6 +92,6 @@ export function ManageNews() {
 
                 <Button type="submit" text={action === "add" ? "Adicionar" : action === "edit" ? "Atualizar" : "Deletar"} />
             </form>
-        </AddNewsContainer> 
+        </NewsContainer> 
     )
 }

@@ -13,6 +13,7 @@ import { ManageNews } from './pages/ManageNews/ManageNews'
 import { Navbar } from './components/Navbar/Navbar';
 import { Profile } from './pages/Profile/Profile';
 import UserProvider from './Context/UserContext';
+import { EditProfile } from './pages/EditProfile/EditProfile';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/manage-news/:action/:id", // carregará juntamente/abaixo da rota principal "/" do Navbar
         element: <ManageNews />,
+      },
+      {
+        path: "/profile/edit", // carregará juntamente/abaixo da rota principal "/" do Navbar
+        element: <EditProfile />,
       }
     ],
   },

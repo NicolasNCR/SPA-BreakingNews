@@ -3,13 +3,14 @@ import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 // Local Modules
-import { ProfileActions, ProfileAvatar, ProfileBackground, ProfileContainer, ProfileHeader, ProfileIconAdd, ProfileIconEdit, ProfileNews, ProfileUser } from './ProfileStyle';
+import { ProfileActions, ProfileAvatar, ProfileBackground, ProfileContainer, ProfileHeader, ProfileIconAdd, ProfileIconEdit, ProfileNews, ProfileUser, StyledLink } from './ProfileStyle';
 import { UserContext } from '../../Context/UserContext';
 import { getAllNewsByUser } from '../../services/newsServices';
 import { Card } from '../../components/Card/Card';
+import { userLogged } from '../../services/userServices';
 
 export function Profile() {
-    const { user } = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
     const [news, setNews] = useState([]);
 
     async function findAllNewsByUser() {
@@ -18,7 +19,19 @@ export function Profile() {
         // console.log(newsResponse.data.results);
     }
 
+    // Responsável por sempre manter os dados do usuário atualizados
+    async function findUserData() {
+        try {
+            const response = await userLogged();
+            // Adiciona ao Context 
+            setUser(response.data)
+        } catch(err) {
+            console.log(err)
+        }
+    } 
+
     useEffect(() => {
+        findUserData();
         findAllNewsByUser();
     }, []);
 
@@ -26,9 +39,12 @@ export function Profile() {
         <ProfileContainer>
             <ProfileHeader>
                 <ProfileIconEdit>
-                    <div>
-                        <i className="bi bi-pencil-square"></i>
-                    </div>
+                    {/* "Link" do react-router-dom estilizado em ProfileStyle */}
+                    <StyledLink to='/profile/edit'>
+                        <div>
+                            <i className="bi bi-pencil-square"></i>
+                        </div>
+                    </StyledLink> 
                 </ProfileIconEdit>
                 <ProfileBackground src={user.background} alt="Fundo de perfi" />
                 <ProfileUser>
