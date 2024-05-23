@@ -25,6 +25,6 @@ export const signupSchema = z.object({
     
     // "data" é o objeto que está sendo e será mandado para realizar a validação
 }).refine((data) => data.password === data.confirmPassword, { 
-    message: "As senhas não correspondem",
+    message: "As senhas não coincidem",
     path: ["confirmPassword"] // local do erro
 });

@@ -29,4 +29,32 @@ export const editProfileSchema = z.object({
         .string()
         .min(1, { message: "Insira um link para a imagem de fundo do perfil." })
         .refine((value) => !/^\s*$/.test(value), { message: "Insira um link para a imagem de fundo do perfil" }),
-})
+    password: z
+        .string()
+        .optional(),
+    newPassword: z
+        .string()
+        .optional()
+        .nullable()
+        .refine((value) => !value || value.length >= 6, {
+            message: "A nova senha deve ter no mínimo 6 caracteres"
+        }),
+    confirmNewPassword: z
+        .string()
+        .optional()
+        .nullable()
+        .refine((value) => !value || value.length >= 6, {
+            message: "A nova senha deve ter no mínimo 6 caracteres"
+        }),
+}).refine((data) => (data.newPassword === data.confirmNewPassword), { 
+    message: "As senhas não coincidem",
+    path: ["confirmNewPassword"], // local do erro
+}).refine((data) => {
+    if ((data.newPassword || data.confirmNewPassword) && !data.password) {
+        return false;
+    }
+    return true;
+}, {
+    message: "Insira sua senha",
+    path: ["password"], // local do erro
+});
